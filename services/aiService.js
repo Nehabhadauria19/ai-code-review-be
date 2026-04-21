@@ -15,16 +15,17 @@ function extractJSON(text) {
 }
 
 async function analyzeCode(code) {
-  const prompt = `
-You are a senior software engineer.
+const prompt = `
+You are a strict senior software engineer performing a professional code review.
 
-STRICT RULES:
-- Classify issues correctly:
-  - Bugs = actual errors
-  - Best Practices = improvements
-- Do NOT mark normal console.log as a bug unless harmful
+Rules:
+- ALWAYS return valid JSON only
+- DO NOT skip issues
+- Be strict: even small issues must be reported
+- If code uses "var", flag it as a best practice issue
+- If code can be improved, include it
 
-Format:
+Return format:
 {
   "bugs": [],
   "security": [],
@@ -34,7 +35,8 @@ Format:
   "suggestions": []
 }
 
-Code:
+Now review this code:
+
 ${code}
 `;
 
