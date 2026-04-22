@@ -18,12 +18,24 @@ async function analyzeCode(code) {
 const prompt = `
 You are a strict senior software engineer performing a professional code review.
 
+<<<<<<< HEAD
 Rules:
 - ALWAYS return valid JSON only
 - DO NOT skip issues
 - Be strict: even small issues must be reported
 - If code uses "var", flag it as a best practice issue
 - If code can be improved, include it
+=======
+STRICT RULES:
+- Return ONLY valid JSON
+- No explanation
+- No text before or after JSON
+- No markdownSTRICT RULES:
+- Classify issues correctly:
+  - Bugs = actual errors
+  - Best Practices = improvements
+- Do NOT mark normal console.log as a bug unless harmful
+>>>>>>> 8429bfb (fixed full backend)
 
 Return format:
 {
